@@ -1,0 +1,17 @@
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# 生成物（コードから再現可能なもの）
+*.png
+*.pdf
+
+# 論文ドラフト（バイナリはリポジトリに入れない）
+*.docx
+~$*
+
+# OS
+.DS_Store
+Thumbs.db
