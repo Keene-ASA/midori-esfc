@@ -1,0 +1,3 @@
+block,param,reading,value,unit,src_tag,use_tag,source,note,status
+B 構造,resid_loss_paddy,resid loss paddy,0.5847,share,DERIVED,FIXED,"MAFF 稲わら利用状況 H18 すき込み75.9% + carbon fraction","from H18 すき込み 0.759 × 0.4? wait actual derivation in ledger","OK
+B 構造,resid_loss_upland,resid loss upland,0.2007,share,DERIVED,FIXED,"Ogawa et al. 1988 2 t DM/ha × 0.4 C","","OK
