@@ -1,0 +1,21 @@
+{
+  "title": "sfc_midori: replication code for 'Assessment of Japan's MIDORI Food System Strategy: A Stock-Flow Consistent Model with Environmental Satellite Accounts'",
+  "upload_type": "software",
+  "description": "R code, calibration ledger, design notes and run log for a master's thesis (University of Hohenheim, 2026) that evaluates the fertiliser KPI and the organic KPI of Japan's MIDORI Food System Strategy in an environmental stock-flow consistent model with satellite accounts for nitrous oxide, paddy methane and soil organic carbon.",
+  "creators": [
+    {
+      "name": "Kin, Asahi",
+      "affiliation": "University of Hohenheim"
+    }
+  ],
+  "license": "mit",
+  "keywords": [
+    "stock-flow consistent modelling",
+    "organic farming",
+    "greenhouse gas accounting",
+    "soil organic carbon",
+    "Japan",
+    "MIDORI Food System Strategy"
+  ],
+  "language": "eng"
+}

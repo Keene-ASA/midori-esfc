@@ -1,18 +1,8 @@
-# R
 .Rhistory
 .RData
 .Rproj.user/
-*.Rproj
-
-# 生成物（コードから再現可能なもの）
-*.png
-!figures/*.png
-*.pdf
-
-# 論文ドラフト（バイナリはリポジトリに入れない）
-*.docx
-~$*
-
-# OS
+Rplots.pdf
 .DS_Store
-Thumbs.db
+RELEASE_CHECKLIST.md
+CLAUDE_CODE_TASK.md
+.claude/

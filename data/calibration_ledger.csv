@@ -1,0 +1,109 @@
+﻿block,param,reading,value,unit,src_tag,use_tag,source,check
+A1 産出額シェア,w_rice,double-u 米,0.300476,share,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計統計表累年統計「年次別農業総産出額及び生産農業所得-全国（昭和30年〜令和6年）」[公開2026-03-25],matches R object
+A1 産出額シェア,w_veg,double-u 野菜,0.398541,share,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計統計表累年統計「年次別農業総産出額及び生産農業所得-全国（昭和30年〜令和6年）」[公開2026-03-25],matches R object
+A1 産出額シェア,w_fruit,double-u 果実,0.145377,share,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計統計表累年統計「年次別農業総産出額及び生産農業所得-全国（昭和30年〜令和6年）」[公開2026-03-25],matches R object
+A1 産出額シェア,w_other,double-u その他,0.155606,share,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計統計表累年統計「年次別農業総産出額及び生産農業所得-全国（昭和30年〜令和6年）」[公開2026-03-25],matches R object
+A2 面積シェア,sA_rice,s-A 米,0.519785,share,DERIVED,FIXED,農林水産省。(a) 作物統計 収穫量累年統計（全国）14表：水稲・小麦・二条大麦・六条大麦・はだか麦・大豆・小豆・いんげん・らっかせい・かんしょ・てんさい・さとうきび・そば・なたね ＝ Zotero MAFF (2026e)。(b) 野菜生産出荷統計 主要野菜計（全国）の作付面積、収穫量及び出荷量累年統計 ＝ MAFF (2026f)。(c) 耕地及び作付面積統計 累年統計（全国）果樹栽培面積・茶栽培面積 ＝ MAFF (2026g)。すべて e-Stat、2017-19 3か年平均,matches R object
+A2 面積シェア,sA_veg,s-A 野菜,0.164138,share,DERIVED,FIXED,農林水産省。(a) 作物統計 収穫量累年統計（全国）14表：水稲・小麦・二条大麦・六条大麦・はだか麦・大豆・小豆・いんげん・らっかせい・かんしょ・てんさい・さとうきび・そば・なたね ＝ Zotero MAFF (2026e)。(b) 野菜生産出荷統計 主要野菜計（全国）の作付面積、収穫量及び出荷量累年統計 ＝ MAFF (2026f)。(c) 耕地及び作付面積統計 累年統計（全国）果樹栽培面積・茶栽培面積 ＝ MAFF (2026g)。すべて e-Stat、2017-19 3か年平均,matches R object
+A2 面積シェア,sA_fruit,s-A 果実,0.075181,share,DERIVED,FIXED,農林水産省。(a) 作物統計 収穫量累年統計（全国）14表：水稲・小麦・二条大麦・六条大麦・はだか麦・大豆・小豆・いんげん・らっかせい・かんしょ・てんさい・さとうきび・そば・なたね ＝ Zotero MAFF (2026e)。(b) 野菜生産出荷統計 主要野菜計（全国）の作付面積、収穫量及び出荷量累年統計 ＝ MAFF (2026f)。(c) 耕地及び作付面積統計 累年統計（全国）果樹栽培面積・茶栽培面積 ＝ MAFF (2026g)。すべて e-Stat、2017-19 3か年平均,matches R object
+A2 面積シェア,sA_other,s-A その他,0.240896,share,DERIVED,FIXED,農林水産省。(a) 作物統計 収穫量累年統計（全国）14表：水稲・小麦・二条大麦・六条大麦・はだか麦・大豆・小豆・いんげん・らっかせい・かんしょ・てんさい・さとうきび・そば・なたね ＝ Zotero MAFF (2026e)。(b) 野菜生産出荷統計 主要野菜計（全国）の作付面積、収穫量及び出荷量累年統計 ＝ MAFF (2026f)。(c) 耕地及び作付面積統計 累年統計（全国）果樹栽培面積・茶栽培面積 ＝ MAFF (2026g)。すべて e-Stat、2017-19 3か年平均,matches R object
+A3 輸入依存度,m_rice,em 米,0.033,share,JP-DATA,INVARIANT,MAFF 品目別自給率（重量ベース）の推移［食料需給表 表5-1、2024年度版、statInfId=000040422876、公開2026-03-13］,matches R object
+A3 輸入依存度,m_veg,em 野菜,0.21,share,JP-DATA,INVARIANT,MAFF 品目別自給率（重量ベース）の推移［食料需給表 表5-1、2024年度版、statInfId=000040422876、公開2026-03-13］,matches R object
+A3 輸入依存度,m_fruit,em 果実,0.613,share,JP-DATA,INVARIANT,MAFF 品目別自給率（重量ベース）の推移［食料需給表 表5-1、2024年度版、statInfId=000040422876、公開2026-03-13］,matches R object
+A3 輸入依存度,m_other,em その他,0.511,share,JP-DATA/CALIB,INVARIANT,MAFF 品目別自給率（重量ベース）の推移［食料需給表 表5-1、2024年度版、statInfId=000040422876、公開2026-03-13］ ＋ MAFF 生産農業所得統計 全国推計統計表累年統計「年次別農業総産出額及び生産農業所得-全国（昭和30年〜令和6年）」[公開2026-03-25],matches R object
+A3 輸入依存度,m_other_range,em その他 レンジ,"[0.347, 0.511]",share,JP-DATA/CALIB,SWEPT,MAFF 品目別自給率（重量ベース）の推移［食料需給表 表5-1、2024年度版、statInfId=000040422876、公開2026-03-13］ ＋ MAFF 生産農業所得統計 全国推計統計表累年統計「年次別農業総産出額及び生産農業所得-全国（昭和30年〜令和6年）」[公開2026-03-25],value quoted in code comment
+A4 有機収量比,psi_rice,psi 米,0.72,ratio,JP-DATA,SWEPT,鳥取県農林総合研究所農業試験場 (2011) 農業試験場成果情報 2011-13,matches R object
+A4 有機収量比,psi_veg,psi 野菜,0.67,ratio,LIT,SWEPT,"Seufert, V., Ramankutty, N. & Foley, J.A. (2012) Nature 485:229-232, DOI 10.1038/nature11069",matches R object
+A4 有機収量比,psi_fruit,psi 果実,0.753,ratio,DERIVED,SWEPT,"de Ponti, T., Rijk, B. & van Ittersum, M.K. (2012) Agricultural Systems 108:1-9",matches R object
+A4 有機収量比,psi_other,psi その他,0.8,ratio,LIT,SWEPT,"Seufert, V., Ramankutty, N. & Foley, J.A. (2012) Nature 485:229-232, DOI 10.1038/nature11069",matches R object
+A5 N2O排出係数,epsN_rice,epsilon-N 米,0.0031,t N2O-N / t N,LIT,FIXED,"Akiyama, H., Yan, X. & Yagi, K. (2006) Soil Sci. Plant Nutr. 52(6):774-787, DOI 10.1111/j.1747-0765.2006.00097.x",matches R object
+A5 N2O排出係数,epsN_veg,epsilon-N 野菜,0.0062,t N2O-N / t N,LIT,FIXED,"Akiyama, H., Yan, X. & Yagi, K. (2006) Soil Sci. Plant Nutr. 52(6):774-787, DOI 10.1111/j.1747-0765.2006.00097.x",matches R object
+A5 N2O排出係数,epsN_fruit,epsilon-N 果実,0.0062,t N2O-N / t N,LIT,FIXED,"Akiyama, H., Yan, X. & Yagi, K. (2006) Soil Sci. Plant Nutr. 52(6):774-787, DOI 10.1111/j.1747-0765.2006.00097.x",matches R object
+A5 N2O排出係数,epsN_other,epsilon-N その他,0.0062,t N2O-N / t N,LIT,FIXED,"Akiyama, H., Yan, X. & Yagi, K. (2006) Soil Sci. Plant Nutr. 52(6):774-787, DOI 10.1111/j.1747-0765.2006.00097.x",matches R object
+A6 有機プレミアム,prem_rice,prem 米,0.393,markup,DERIVED,FIXED,"農林水産省 第11回 環境保全型農業直接支払制度に関する第三者委員会（2019-08-22）配付資料 Ⅳ 制度の評価（後編）1.(3) 農産物の販売状況、表4-1「慣行農産物との価格差（C3:農業者）」＜有機栽培（化学肥料・化学合成農薬の使用なし）レベル＞・有機JAS認証あり・「全体」行 [https://www.maff.go.jp/j/seisan/kankyo/kakyou_chokubarai/sansya_11.html, 取得2026-08-15]",matches R object
+A6 有機プレミアム,prem_veg,prem 野菜,0.266,markup,DERIVED,FIXED,"農林水産省 第11回 環境保全型農業直接支払制度に関する第三者委員会（2019-08-22）配付資料 Ⅳ 制度の評価（後編）1.(3) 農産物の販売状況、表4-1「慣行農産物との価格差（C3:農業者）」＜有機栽培（化学肥料・化学合成農薬の使用なし）レベル＞・有機JAS認証あり・「全体」行 [https://www.maff.go.jp/j/seisan/kankyo/kakyou_chokubarai/sansya_11.html, 取得2026-08-15]",matches R object
+A6 有機プレミアム,prem_fruit,prem 果実,0.266,markup,DERIVED,FIXED,"農林水産省 第11回 環境保全型農業直接支払制度に関する第三者委員会（2019-08-22）配付資料 Ⅳ 制度の評価（後編）1.(3) 農産物の販売状況、表4-1「慣行農産物との価格差（C3:農業者）」＜有機栽培（化学肥料・化学合成農薬の使用なし）レベル＞・有機JAS認証あり・「全体」行 [https://www.maff.go.jp/j/seisan/kankyo/kakyou_chokubarai/sansya_11.html, 取得2026-08-15]",matches R object
+A6 有機プレミアム,prem_other,prem その他,0.266,markup,DERIVED,FIXED,"農林水産省 第11回 環境保全型農業直接支払制度に関する第三者委員会（2019-08-22）配付資料 Ⅳ 制度の評価（後編）1.(3) 農産物の販売状況、表4-1「慣行農産物との価格差（C3:農業者）」＜有機栽培（化学肥料・化学合成農薬の使用なし）レベル＞・有機JAS認証あり・「全体」行 [https://www.maff.go.jp/j/seisan/kankyo/kakyou_chokubarai/sansya_11.html, 取得2026-08-15]",matches R object
+A7 部門シェア,share_crop,耕種シェア,0.6359,share,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計 (2017-19),matches R object
+A7 部門シェア,share_livestock,畜産シェア,0.3576,share,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計 (2017-19),matches R object
+A8 対外アンカー,NFA_yen,たいがいじゅんしさん（円額）,342.5890,兆円,JP-DATA,INVARIANT,"MOF 本邦対外資産負債残高の推移（時系列データ）[BPM6, 年末, 単位10億円, 2026年5月公表]",matches R object
+A8 対外アンカー,primary_yen,だいいちじしょとくしゅうし（円額）,21.2133,兆円,JP-DATA,INVARIANT,"MOF 国際収支状況 表6s-1-1 国際収支総括表（暦年・半期）平成8年以降 [単位億円, 2026-04-08改訂]",matches R object
+A8 対外アンカー,NFA_pct,対外純資産/GDP,0.602403537,share of GDP,DERIVED,INVARIANT,"MOF 本邦対外資産負債残高の推移（時系列データ）[BPM6, 年末, 単位10億円, 2026年5月公表]",matches R object
+A8 対外アンカー,primary_pct,第一次所得収支/GDP,0.037301218,share of GDP,DERIVED,INVARIANT,"MOF 国際収支状況 表6s-1-1 国際収支総括表（暦年・半期）平成8年以降 [単位億円, 2026-04-08改訂]",matches R object
+A8 対外アンカー,Xag_pct,農産物輸出/GDP,0.0009674051007,share of GDP,JP-DATA,FIXED,MAFF 農林水産物輸出入概況（財務省貿易統計ベース）,matches R object
+A9 SNA,CONS_HH,家計最終消費支出,295.9392667,兆円,JP-DATA,FIXED,"内閣府 国民経済計算 2024年度年次推計 2020年基準・2008SNA 確報 主要系列表(1) [2024fcm1n_jp.xlsx, 取得2026-07-19]",matches R object
+A9 SNA,GOV_CONS,政府最終消費支出,109.0784667,兆円,JP-DATA,FIXED,"内閣府 国民経済計算 2024年度年次推計 2020年基準・2008SNA 確報 主要系列表(1) [2024fcm1n_jp.xlsx, 取得2026-07-19]",matches R object
+A9 SNA,nominal_GDP,名目GDP,568.7035,兆円,JP-DATA,FIXED,"内閣府 国民経済計算 2024年度年次推計 2020年基準・2008SNA 確報 主要系列表(1) [2024fcm1n_jp.xlsx, 取得2026-07-19]",matches R object
+A9 SNA,CROP_OUT,耕種産出額,5.790666667,兆円,JP-DATA,FIXED,MAFF 生産農業所得統計 全国推計 (2017-19),matches R object
+A9 SNA,unit_tn,単位ブリッジ,0.0579066666667,兆円 / 指数1単位,DERIVED,FIXED,MAFF 生産農業所得統計 全国推計 (2017-19),matches R object
+B 構造,Fbar,F-bar 基準施肥量,100,index,JP-DATA,FIXED,"Toriyama, K. (2002) Soil Sci. Plant Nutr. 48(3):293-300, DOI 10.1080/00380768.2002.10409204",matches R object
+B 構造,pF,p-F 肥料価格（肥料費/作物収入）,0.08286,price index,JP-DATA,FIXED,農林水産省 農業経営統計調査 経営形態別経営統計 累年統計表 01-1 全農業経営体（全国）。e-Stat、提供分類1=営農類型別経営統計／提供分類2=長期累年、ファイル e036-ts-k011.xlsx、公開(更新)日 2026-03-27。収録年次 令和元年〜令和6年。Zotero: MAFF (2026d),matches R object
+B 構造,w,double-u 賃金率,1,numeraire,NORM,FIXED,-,matches R object
+B 構造,prN,pr-N 非農業労働生産性,1,numeraire,NORM,FIXED,-,matches R object
+B 構造,LAbar,L-A-bar 農地面積,100,index,NORM,FIXED,-,matches R object
+B 構造,beta,beta 無施肥時の落ち込み幅,0.388821,-,DERIVED,BOUNDED,"Toriyama, K. (2002) Soil Sci. Plant Nutr. 48(3):293-300, DOI 10.1080/00380768.2002.10409204; Li, D. et al. (2017) IOP Conf. Ser. EES 77:012011, DOI 10.1088/1755-1315/77/1/012011",matches R object
+B 構造,gamma,gamma 施肥応答が飽和する速さ,0.012479,-,DERIVED,BOUNDED,"Toriyama, K. (2002) Soil Sci. Plant Nutr. 48(3):293-300, DOI 10.1080/00380768.2002.10409204; Li, D. et al. (2017) IOP Conf. Ser. EES 77:012011, DOI 10.1088/1755-1315/77/1/012011",matches R object
+B 構造,m0_Toriyama,モーメント1 = g(0)/g(Fbar)（飽和水準に対する比ではない）,0.687984,ratio,LIT,QUASI-INVARIANT,"Toriyama, K. (2002) Soil Sci. Plant Nutr. 48(3):293-300, DOI 10.1080/00380768.2002.10409204",matches R object
+B 構造,m70_Li,モーメント2 = g(0.7·Fbar)/g(Fbar)（同じく基準比）,0.94294,ratio,LIT,FIXED,"Li, D. et al. (2017) IOP Conf. Ser. EES 77:012011, DOI 10.1088/1755-1315/77/1/012011",matches R object
+B 構造,ghg_n2o_syn0,BAU 化学肥料由来N2O,1.033459,Mt CO2-eq,JP-DATA,FIXED,GIO (2026) 日本国温室効果ガスインベントリ報告書 2026年版（2026-04-14）／年次データExcel「2026年版NID 第5章 農業分野」(2026-05-29) シート NID第5章_排出量 表5-50 3.D.1.直接排出 1.無機質肥料（65行）,matches R object
+B 構造,ghg_ch4_pad0,BAU 水田CH4,13.434926,Mt CO2-eq,JP-DATA,FIXED,GIO (2026) 日本国温室効果ガスインベントリ報告書 2026年版（2026-04-14）／年次データExcel「2026年版NID 第5章 農業分野」(2026-05-29) シート NID第5章_排出量 表5-43 稲作に伴うCH4排出量（3.C.）合計行,matches R object
+B 構造,epsN_gm,epsilon-N-gm 緑肥N2O係数,0.00082582,t N2O-N / t N,DERIVED/SWEPT,FIXED,"Xie et al. (2016) PLoS ONE 11(12):e0168134, Table 1 ＋ Akiyama, Yan & Yagi (2006)",matches R object
+B 構造,nu_O,nu-O 有機農地の緑肥由来【総】窒素投入量／慣行の化学肥料N施用量,1.1927083,ratio,LIT,BOUNDED,Nakayama & Yoshida (2005) 東北農業研究 58:35-36 表(6) ＋ Nagumo et al. (2014) 日作紀 83(1):15-24 p.16,matches R object
+B 構造,ch4_uplift,ch4-uplift 有機水田CH4増加率,0.8673672646,ratio,DERIVED,BOUNDED,"Katayanagi, N. et al. (2016) Sci. Total Environ. 547:429-440, DOI 10.1016/j.scitotenv.2015.12.149",matches R object
+B 構造,kappa1,kappa1 加速度因子,0.2,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,kappa2,kappa2 収益性反応,2.0,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,kappa3,kappa3 投資補助金反応,0.5,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,zeta,zeta 減耗率,0.05,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,c1,c1 可処分所得からの限界消費性向,0.7,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,c2,c2 資産からの限界消費性向,0.05,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,ellA,ellA 単位面積あたり農業労働,0.3,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,Ga,Ga 政府の農産物購入,10,-,ASSUMED,INVARIANT,-,matches R object
+B 構造,kN,k-N 非農業資本産出比,2.4,ratio,ASSUMED,INVARIANT,-,matches R object
+B 構造,r_B,r-B 国債金利,0.02,rate,CALIB,INVARIANT,"内閣府 国民経済計算 制度部門別勘定「４．一般政府（１）第１次所得の配分勘定」1.1(1) 利子（支払）, 年度 [2024i4_jp.xlsx, 取得2026-08-15]",matches R object
+B 構造,Fbar_kgN,F-bar 物理量,96,kgN/ha,JP-DATA,FIXED,"Toriyama, K. (2002) Soil Sci. Plant Nutr. 48(3):293-300, DOI 10.1080/00380768.2002.10409204",matches R object
+B 構造,CN_gm,C/N 緑肥,17.1,ratio,LIT,FIXED,南雲ら (2014) ※台帳J引用文献「南雲ら2014」行に現物PDF確認済みとして既載,matches R object
+B 構造,k_paddy,k 水田 SOC分解速度,0.046733,1/yr,DERIVED,FIXED,"Shirato, Y. & Yokozawa, M. (2005) Soil Sci. Plant Nutr. 51(3):405-415, Table 1（k_orig）および Table 3 第1ブロック（f）",matches R object
+B 構造,k_upland,k 畑 SOC分解速度,0.033294,1/yr,DERIVED,FIXED,"Shirato, Y., Hakamata, T. & Taniyama, I. (2004) Soil Sci. Plant Nutr. 50(1):149-158, DOI 10.1080/00380768.2004.10408463",matches R object
+B 構造,phi,緑肥施用ほ場割合,1.0,share,ASSUMED,SWEPT,農林水産省 第11回 環境保全型農業直接支払制度に関する第三者委員会（2019-08-22）表3-4,matches R object
+B 構造,A_ha,1指数haあたり実面積,28242,ha / index-ha,DERIVED,FIXED,-,matches R object
+B 構造,iota_gm,緑肥C投入 総量,1.957950,tC/ha/yr,DERIVED,FIXED,-,matches R object
+B 構造,gamma_soc,SOC→衛星単位ブリッジ,0.103554,Mt CO2-eq / (index-ha * tC/ha/yr),DERIVED,FIXED,-,matches R object
+B 構造,DM_upland_residue,はたざんさりょう,3.8284,t DM/ha/yr,LIT,FIXED,"Ogawa, K., Takeuchi, Y. & Katayama, M. (1988) 北海道農業試験場研究報告 149:57-91 表15",value quoted in code comment
+B 構造,R_straw_paddy,いなわらせいさんりょう,1.8125,tC/ha/yr,LIT,FIXED,"Shirato, Y. & Yokozawa, M. (2005) Soil Sci. Plant Nutr. 51(3):405-415 Table 2",value quoted in code comment
+B 構造,R_stub_paddy,こんかぶ・かりかぶ,0.4700,tC/ha/yr,LIT,FIXED,"Shirato, Y. & Yokozawa, M. (2005) Soil Sci. Plant Nutr. 51(3):405-415 Table 2",value quoted in code comment
+B 構造,straw_incorporation_rate,いなわらすきこみりつ,0.6252,share,JP-DATA,FIXED,農林水産省 (2026)「稲作の現状とその課題について」令和8年7月 参考2「稲わら、もみがらの発生状況」[https://www.maff.go.jp/j/syouan/keikaku/soukatu/attach/pdf/inasaku-204.pdf],value quoted in code comment
+B 構造,resid_loss_paddy,残渣減 水田,0.4489,tC/ha/yr,DERIVED,FIXED,"Shirato, Y. & Yokozawa, M. (2005) Soil Sci. Plant Nutr. 51(3):405-415 Table 2 ／ 農林水産省 (2026)「稲作の現状とその課題について」令和8年7月 参考2「稲わら、もみがらの発生状況」",matches R object
+B 構造,resid_loss_upland,残渣減 畑,0.3856,tC/ha/yr,DERIVED,FIXED,"Ogawa, K., Takeuchi, Y. & Katayama, M. (1988) 北海道農業試験場研究報告 149:57-91 「Biomass production and the amounts of absorbed inorganic elements by crops in arable lands in Hokkaido, and its evaluation」",matches R object
+B 構造,f_season,季節係数 k_paddy,0.40,-,LIT,"BOUNDED [0.30, 0.50]","Shirato, Y. & Yokozawa, M. (2005) Soil Sci. Plant Nutr. 51(3):405-415, Table 3 第1ブロック（夏=冬）および p.409, p.411",value quoted in code comment
+B 構造,iota_paddy,緑肥C投入 正味 水田,1.509050,tC/ha/yr,DERIVED,FIXED,-,matches R object
+B 構造,iota_upland,緑肥C投入 正味 畑,1.572350,tC/ha/yr,DERIVED,FIXED,-,matches R object
+B 構造,loss30_conv,含意する慣行収量ロス(-30%施肥),0.057059635,ratio,DERIVED,FIXED,"Li, D. et al. (2017) IOP Conf. Ser. EES 77:012011, DOI 10.1088/1755-1315/77/1/012011",printed by the script
+B 構造,loss30_upper,S9.5 ロスの上界（線形極限）,0.093605,ratio,DERIVED,BOUNDED,"Toriyama, K. (2002) Soil Sci. Plant Nutr. 48(3):293-300, DOI 10.1080/00380768.2002.10409204",printed by the script
+B 構造,nu_O_band,nu-O 実測レンジ,"[1.0417, 1.6562]",ratio,LIT,SWEPT,中山秀貴・吉田直史 (2005) 東北農業研究 58:35-36; 南雲俊之・金澤裕美・大井友紀子・久保田恭子 (2014) 日本作物学会紀事 83(1):15-24,printed by the script
+B 構造,epsN_gm_counter_check,epsN_gm バンド,0.00082582; 0.00195; 0.0031,ratio,DERIVED/SWEPT,BOUNDED,同上,matches R object
+B 構造,WL_PiL,畜産の賃金/利潤分割,0.30 / 0.70,share,ASSUMED,INVARIANT,-,matches R object
+B 構造,cost_c_ranking,はいぶん コスト じゅんい,other 0.1292 < rice 0.1619 < fruit 0.4776 < veg 0.8013,index/area,DERIVED,STATE-IN-TEXT,-,printed by the script
+B 構造,maff_rate,交付金方式における有機農業の単位削減量,1.04,tCO2/ha/yr,JP-DATA,FIXED,"MAFF, Third-Party Committee on the Direct Payment Scheme for Environmentally Friendly Agriculture, second-period final evaluation (August 2024), Table 3-3",matches R object
+C 集計,psi_bar,psi-bar 価値加重有機収量比,0.717319,ratio,DERIVED,SWEPT,-,matches R object
+C 集計,psi_bar_LO,psi-bar 下限（＝ベースライン）,0.717319,ratio,DERIVED,SWEPT,-,matches R object
+C 集計,psi_bar_HI,psi-bar 上限（全面de Ponti）,0.830436,ratio,DERIVED,SWEPT,"de Ponti, T., Rijk, B. & van Ittersum, M.K. (2012) Agricultural Systems 108:1-9",matches R object
+C 集計,Dbar,D-bar BAU食料需要,150.907621,index,DERIVED,INVARIANT,-,matches R object
+C 集計,IM_star,BAU食料輸入,50.907621,index,DERIVED,FIXED,-,matches R object
+C 集計,epsN_bar,epsilon-N-bar 面積加重N2O係数,0.00458867,ratio,DERIVED,FIXED,-,matches R object
+C 集計,prem_bar,prem-bar psi加重プレミアム,0.304303,ratio,DERIVED,FIXED,-,matches R object
+C 集計,ghg_n2o_gm0,全面有機時の緑肥N2O,0.221833,Mt CO2-eq,DERIVED,BOUNDED,-,matches R object
+C 集計,Dbar_rice,米のBAU需要,31.0730,index,DERIVED,FIXED,-,printed by the script
+D 対外利回り,r_avg,r-average 平均対外利回り,0.061920649,rate,DERIVED,INVARIANT,"MOF 本邦対外資産負債残高の推移（時系列データ）[BPM6, 年末, 単位10億円, 2026年5月公表] ＋ MOF 国際収支状況 表6s-1-1 国際収支総括表（暦年・半期）平成8年以降 [単位億円, 2026-04-08改訂]",matches R object
+D 対外利回り,r_marg,r-marginal 限界対外利回り（スノーボール率）,0.02,rate,LIT/SWEPT,SWEPT,"MOF 国債金利情報「過去の金利情報（昭和49年〜）」[長期系列, 収録S49.9.24–R8.7.31]",matches R object
+F シナリオ,PI_2030,2030年 化学肥料削減率,0.2,rate,JP-DATA,FIXED,農林水産省「みどりの食料システム戦略」（2021-05-12 策定）KPI一覧。数値は農林水産省「みどりの食料システム戦略KPIの2021年、2023年及び2024年実績値一覧について」（KPI一覧表、ファイル みどり2024実績値.pdf）で確認,matches R object
+F シナリオ,PI_2050,2050年 化学肥料削減率,0.3,rate,JP-DATA,FIXED,農林水産省「みどりの食料システム戦略」（2021-05-12 策定）KPI一覧。数値は農林水産省「みどりの食料システム戦略KPIの2021年、2023年及び2024年実績値一覧について」（KPI一覧表、ファイル みどり2024実績値.pdf）で確認,matches R object
+F シナリオ,A_2030,2030年 有機面積率,0.01575,share of area,JP-DATA,FIXED,農林水産省「みどりの食料システム戦略」（2021-05-12 策定）KPI一覧。数値は農林水産省「みどりの食料システム戦略KPIの2021年、2023年及び2024年実績値一覧について」（KPI一覧表、ファイル みどり2024実績値.pdf）で確認 ／ MAFF (2026) みどり加速化GXプラン p.10,matches R object
+F シナリオ,A_2050,2050年 有機面積率,0.25,share of area,JP-DATA,FIXED,農林水産省「みどりの食料システム戦略」（2021-05-12 策定）KPI一覧。数値は農林水産省「みどりの食料システム戦略KPIの2021年、2023年及び2024年実績値一覧について」（KPI一覧表、ファイル みどり2024実績値.pdf）で確認,matches R object
+F シナリオ,CAP,1作物の自作付面積のうち転換可能な最大シェア,0.75,share of own area,ASSUMED,SWEPT,-,matches R object
+F シナリオ,YEAR0,起点年,2018,year,-,FIXED,-,matches R object
+F シナリオ,TERM,期間数,32,periods,-,FIXED,-,matches R object
+F シナリオ,KPI6_interpretation,KPI(6) の解釈,全国総量 -30%（強度目標ではない）,-,JP-DATA,DECIDED,農林水産省「みどりの食料システム戦略」（2021-05-12 策定）KPI一覧。数値は農林水産省「みどりの食料システム戦略KPIの2021年、2023年及び2024年実績値一覧について」（KPI一覧表、ファイル みどり2024実績値.pdf）で確認,implemented in the equations
+F シナリオ,Fint_formula,慣行地の施肥強度（実装式）,Fint = (1-pi)*Fbar/(1-a) ; F = Fint*(1-a) = (1-pi)*Fbar,-,DERIVED,FIXED,-,implemented in the equations
+F シナリオ,KPI_non_independence,KPI(6)とKPI(7)の非独立性,a=0.25 なので有機KPIだけで全国総量が25%低下。KPI(6)の30%到達に必要な慣行地の強度削減はわずか6.67%（Fint = 70/0.75 = 93.333）,-,DERIVED,FINDING,-,implemented in the equations
+F シナリオ,ramp_shape,政策ランプの形状,2022年開始・2030年に折れ点・区分線形,-,DESIGN,FIXED,-,implemented in the equations
+F シナリオ,Sub_I,投資補助金,0,index,-,DROPPED,-,matches R object

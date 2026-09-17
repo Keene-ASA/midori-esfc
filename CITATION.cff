@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below, together with the DOI of the release on Zenodo."
+type: software
+title: "sfc_midori: replication code for 'Assessment of Japan's MIDORI Food System Strategy: A Stock-Flow Consistent Model with Environmental Satellite Accounts'"
+authors:
+  - family-names: Kin
+    given-names: Asahi
+    affiliation: University of Hohenheim
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/Keene-ASA/midori-esfc"
+keywords:
+  - stock-flow consistent modelling
+  - organic farming
+  - greenhouse gas accounting
+  - soil organic carbon
+  - Japan
+  - MIDORI Food System Strategy
+preferred-citation:
+  type: thesis
+  thesis-type: "Master's thesis"
+  title: "Assessment of Japan's MIDORI Food System Strategy: A Stock-Flow Consistent Model with Environmental Satellite Accounts"
+  authors:
+    - family-names: Kin
+      given-names: Asahi
+  institution:
+    name: University of Hohenheim
+  year: 2026
