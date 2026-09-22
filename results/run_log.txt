@@ -1,13 +1,3 @@
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.0     ✔ readr     2.2.0
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 === 0. derived aggregates ===
   psi_bar   0.717319  band [0.717319, 0.830436]
   Dbar      150.907621   IM* 50.907621 (33.7% of demand)
@@ -38,9 +28,6 @@ Rice corner: Dbar 31.0730  YA 30.0476  gap 1.0254 (3.30% of demand)
 1      2  100.   100   100 -3.41e-13 4590. 8064.      0       0     0
 2     32  100.   100   100 -3.41e-13 4590. 8064.      0       0     0
 Walras leak 1.0186e-10   BAU INF 284.195516
-Warning message:
-Passing exogenous series with a shock can lead to unexpected behavior if the length of the series is smaller than the periods to the end of the scenario. Be cautious when using this functionality.
-This warning is displayed once per session. 
 
 === 3. HEADLINE (2050) ===
 S1 dCAB  -4.6058 (-0.2667 tn JPY/yr)
@@ -117,7 +104,6 @@ Walras leak S2 1.0186e-10
 
 === 7.6 psi_rice diagnostic ===
   psi_rice 0.720 -> psi_bar 0.717319, conversion dCAB -2.7008   Tottori 2011-13 [ADOPTED]
-  psi_rice 0.810 -> psi_bar 0.744362, conversion dCAB -1.8633   retired: untraceable
   psi_rice 0.940 -> psi_bar 0.783424, conversion dCAB -0.6536   de Ponti Tab.1 rice, n=7 [band upper]
 
 === 7.6-bis SOC->yield feedback: exogenous upper bound (rice only) ===
