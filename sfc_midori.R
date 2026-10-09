@@ -298,7 +298,7 @@ eqs <- sfcr_set(
   LAo ~ a * LAbar,
   dN2O ~ ghg_n2o_syn0 * (F / Fbar - 1),
   dN2Ogm ~ ghg_n2o_gm0 * (LAo / LAbar),
-  dCH4 ~ ghg_ch4_pad0 * (sA_rice * LAo / LAbar) * ch4_uplift,
+  dCH4 ~ ghg_ch4_pad0 * (LAo / LAbar) * ch4_uplift,
   # two-pool soil carbon, deviation from BAU [N20]
   SOCp ~ SOCp[-1] + phi * iota_paddy * (sA_rice * LAo) - k_paddy * SOCp[-1],
   SOCu ~ SOCu[-1] + phi * iota_upland * ((1 - sA_rice) * LAo) - k_upland * SOCu[-1],
@@ -514,13 +514,13 @@ soc_extend <- function(Tend = 250, phi = phi_v, iota_p = iota_paddy_v,
     }
     LAo <- a * LAbar_v
     e <- ghg_n2o_syn0_v * (-pi_) + ghg_n2o_gm0_v * (LAo / LAbar_v) * phi +
-      ghg_ch4_pad0_v * (sA_rice * LAo / LAbar_v) * upl * phi
+      ghg_ch4_pad0_v * (LAo / LAbar_v) * upl * phi
     npx <- (1 - k_paddy_v) * sp + phi * iota_p * (sA_rice * LAo)
     nux <- (1 - k_upland_v) * su + phi * iota_u * ((1 - sA_rice) * LAo)
     sink[t] <- gamma_soc_v * ((npx - sp) + (nux - su))
     n1[t] <- ghg_n2o_syn0_v * (-pi_)
     n2[t] <- ghg_n2o_gm0_v * (LAo / LAbar_v) * phi
-    c4[t] <- ghg_ch4_pad0_v * (sA_rice * LAo / LAbar_v) * upl * phi
+    c4[t] <- ghg_ch4_pad0_v * (LAo / LAbar_v) * upl * phi
     maff[t] <- maff_rate * (LAo * A_ha_v) / 1e6 # scheme: constant rate on converted area
     g[t] <- e - sink[t]
     sp <- npx
@@ -545,7 +545,7 @@ for (ph in c(1.0, 29 / 45)) {
   ext_ph <- soc_extend(phi = ph)
   cum <- cumsum(ifelse(is.na(ext_ph$dGHG), 0, ext_ph$dGHG))
   EMperm_ph <- ghg_n2o_syn0_v * (-PI50) + ghg_n2o_gm0_v * A50 * ph +
-    ghg_ch4_pad0_v * sA_rice * A50 * ch4_uplift_v * ph
+    ghg_ch4_pad0_v * A50 * ch4_uplift_v * ph
   cat(sprintf(
     "  phi %.4f: dGHG2050 %+9.4f | annual cross %.1f | cumulative cross %d\n",
     ph, ext_ph$dGHG[Y2050], cross_up(ext_ph$dGHG, ext_ph$year),
@@ -557,7 +557,7 @@ for (ph in c(1.0, 29 / 45)) {
   ))
 }
 
-# -- 4-ter. Organic ramp continued after 2050 (Section 6.3) --
+# -- 4-ter. Organic ramp continued after 2050 (Section 6.4) --
 cat("\n=== 4-ter. ramp termination: crossing year by terminal organic share ===\n")
 for (ae in c(A50, 0.354, 0.50)) {
   ext_a <- soc_extend(a_end = ae)
@@ -574,7 +574,7 @@ for (ae in c(A50, 0.354, 0.50)) {
 ext <- soc_extend()
 tcross <- cross_up(ext$dGHG, ext$year)
 EMperm <- ghg_n2o_syn0_v * (-PI50) + ghg_n2o_gm0_v * A50 +
-  ghg_ch4_pad0_v * sA_rice * A50 * ch4_uplift_v
+  ghg_ch4_pad0_v * A50 * ch4_uplift_v
 fg <- ext %>% filter(year >= 2020, year <= 2100)
 
 comp <- fg %>%
@@ -609,16 +609,16 @@ p_soc <- ggplot() +
   geom_vline(xintercept = 2050, linetype = 2, linewidth = 0.4, colour = "grey50") +
   geom_vline(xintercept = tcross, linetype = 2, linewidth = 0.4, colour = "grey50") +
   geom_line(data = nets, aes(year, value, colour = conv), linewidth = 1) +
-  annotate("text", x = 2050, y = 2.05, label = "KPI target year", hjust = 1.05,
+  annotate("text", x = 2050, y = 3.25, label = "KPI target year", hjust = 1.05,
            size = 3, colour = "grey35") +
-  annotate("text", x = tcross, y = 2.05,
-           label = sprintf("annual balance turns positive (%.0f)", tcross),
+  annotate("text", x = tcross, y = 3.25,
+           label = sprintf("annual balance turns positive (%d)", as.integer(ceiling(tcross))),
            hjust = -0.05, size = 3, colour = "grey35") +
   annotate("text", x = 2100, y = EMperm,
            label = sprintf("permanent %+.2f", EMperm),
            hjust = 1.02, vjust = -0.6, size = 3, colour = "grey35") +
   scale_x_continuous(breaks = seq(2020, 2100, 20)) +
-  scale_y_continuous(breaks = seq(-3, 2, 0.5)) +
+  scale_y_continuous(breaks = seq(-3, 3.5, 0.5)) +
   scale_fill_manual(values = c(
     "Paddy CH4" = "#D1495B", "Green-manure N2O" = "#EDAE49",
     "Synthetic-fertiliser N2O" = "#3E7CB1",
@@ -801,7 +801,7 @@ for (i in seq_along(psi_rice_tests)) {
   ))
 }
 
-# -- 7.6-bis Soil carbon raising rice yield, as an upper bound (Section 6.3) --
+# -- 7.6-bis Soil carbon raising rice yield, as an upper bound (Section 6.4) --
 #    h multiplies psi_rice; 1.05 is the largest gain supported by Ma et al.
 #    (2023). dGHG does not depend on psi_bar.
 cat("\n=== 7.6-bis SOC->yield feedback: exogenous upper bound (rice only) ===\n")
@@ -936,7 +936,7 @@ eqs4 <- sfcr_set(
   YA ~ YA_rice + YA_veg + YA_fruit + YA_other,
   dN2O ~ ghg_n2o_syn0 * (F / Fbar - 1),
   dN2Ogm ~ ghg_n2o_gm0 * areaO,
-  dCH4 ~ ghg_ch4_pad0 * (sA_rice * a_rice) * ch4_uplift,
+  dCH4 ~ ghg_ch4_pad0 * a_rice * ch4_uplift,
   GHGnet ~ dN2O + dN2Ogm + dCH4,
   PREM ~ 100 * (prem_rice * w_rice * a_rice * psi_rice +
                   prem_veg * w_veg * a_veg * psi_veg +
@@ -1168,10 +1168,6 @@ p_tr <- ggplot(mapping = aes(x, y)) +
     size = 3.2, colour = "#D1495B", box.padding = 1.2,
     nudge_y = 0.03, min.segment.length = 0, seed = 20260807
   ) +
-  annotate("segment", x = -0.35, xend = -0.35, y = -0.32, yend = -0.28,
-           arrow = arrow(length = unit(6, "pt")), colour = "grey40") +
-  annotate("text", x = -0.33, y = -0.30, label = "better on both",
-           hjust = 0, size = 3, colour = "grey40") +
   scale_y_continuous(breaks = seq(-0.35, 0, 0.05)) +
   labs(
     x = "Annual GHG change once soil carbon has stabilised (Mt-CO2eq/yr; + = worse)",

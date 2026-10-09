@@ -1,3 +1,13 @@
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.0     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 === 0. derived aggregates ===
   psi_bar   0.717319  band [0.717319, 0.830436]
   Dbar      150.907621   IM* 50.907621 (33.7% of demand)
@@ -28,6 +38,9 @@ Rice corner: Dbar 31.0730  YA 30.0476  gap 1.0254 (3.30% of demand)
 1      2  100.   100   100 -3.41e-13 4590. 8064.      0       0     0
 2     32  100.   100   100 -3.41e-13 4590. 8064.      0       0     0
 Walras leak 1.0186e-10   BAU INF 284.195516
+Warning message:
+Passing exogenous series with a shock can lead to unexpected behavior if the length of the series is smaller than the periods to the end of the scenario. Be cautious when using this functionality.
+This warning is displayed once per session. 
 
 === 3. HEADLINE (2050) ===
 S1 dCAB  -4.6058 (-0.2667 tn JPY/yr)
@@ -39,24 +52,24 @@ S1 dFISC -3.6670 (-0.2123 tn JPY/yr)   S2 dFISC -5.6497 (-0.3272 tn JPY/yr)
 CONVERSION fiscal (S2-S1) -1.9827 (-0.1148 tn JPY/yr)   dB +20.1414 (+1.166 tn JPY)
 DECOMPOSITION output -2.1787 (80.7%) | interest on lost NFA -0.5222 (19.3%)  [dF = +0.00e+00]
 S1 dGHG  -0.310038 Mt-CO2eq/yr
-S2 dGHG  -1.445171 Mt-CO2eq/yr [syn -0.310038 | gm +0.055458 | CH4 +1.514266 | SOC -2.704857]
-   SOC gain 9.496 MtC | equilibrium dGHG +1.259686 Mt-CO2eq/yr (sink -> 0)
-2030 checkpoint (S2): dCAB -2.1808  dGHG -0.326366 Mt-CO2eq/yr
+S2 dGHG  -0.046182 Mt-CO2eq/yr [syn -0.310038 | gm +0.055458 | CH4 +2.913254 | SOC -2.704857]
+   SOC gain 9.496 MtC | equilibrium dGHG +2.658674 Mt-CO2eq/yr (sink -> 0)
+2030 checkpoint (S2): dCAB -2.1808  dGHG -0.238230 Mt-CO2eq/yr
 Walras leak S1 1.0914e-10
 Walras leak S2 1.0186e-10
 
 === 4. dGHG: transient stock vs permanent flow ===
-  phi 1.0000: dGHG2050   -1.4452 | annual cross 2069.1 | cumulative cross 2118
-             equilibrium dGHG +1.259686 Mt-CO2eq/yr (PERMANENT)
-  phi 0.6444: dGHG2050   -1.0416 | annual cross 2072.7 | cumulative cross 2134
-             equilibrium dGHG +0.701562 Mt-CO2eq/yr (PERMANENT)
+  phi 1.0000: dGHG2050   -0.0462 | annual cross 2050.4 | cumulative cross 2063
+             equilibrium dGHG +2.658674 Mt-CO2eq/yr (PERMANENT)
+  phi 0.6444: dGHG2050   -0.1400 | annual cross 2052.1 | cumulative cross 2068
+             equilibrium dGHG +1.603132 Mt-CO2eq/yr (PERMANENT)
 
 === 4-ter. ramp termination: crossing year by terminal organic share ===
-  a_end 0.2500 (reached 2050.0): annual cross 2069.1 | dGHG2050 -1.4452
-  a_end 0.3540 (reached 2058.9): annual cross 2072.6 | dGHG2050 -1.4452
-  a_end 0.5000 (reached 2071.3): annual cross 2079.2 | dGHG2050 -1.4452
-  scheme convention at 2050: -0.734292 Mt/yr vs this model -1.445171 Mt/yr
-  scheme convention is a CONSTANT rate: still -0.734 Mt/yr in 2100; this model +0.882
+  a_end 0.2500 (reached 2050.0): annual cross 2050.4 | dGHG2050 -0.0462
+  a_end 0.3540 (reached 2058.9): annual cross 2050.8 | dGHG2050 -0.0462
+  a_end 0.5000 (reached 2071.3): annual cross 2050.8 | dGHG2050 -0.0462
+  scheme convention at 2050: -0.734292 Mt/yr vs this model -0.046182 Mt/yr
+  scheme convention is a CONSTANT rate: still -0.734 Mt/yr in 2100; this model +2.281
   [first-period coefficient 0.93 for reference: -0.656627 Mt/yr at 2050]
 
 === 7.1 psi_bar sweep ===
@@ -80,27 +93,27 @@ Walras leak S2 1.0186e-10
   -> r_avg pins the BAU level only; it cancels from the difference.
 
 === 7.4 GHG reversal: ch4_uplift break-even over the nu_O band ===
-  nu_O 1.0417: gm N2O  0.0484 | route A 0.7575 | break-even 0.149845 | margin  5.06x
-  nu_O 1.1927: gm N2O  0.0555 | route A 0.8674 | break-even 0.145822 | margin  5.95x
-  nu_O 1.6562: gm N2O  0.0770 | route A 1.2045 | break-even 0.133477 | margin  9.02x
+  nu_O 1.0417: gm N2O  0.0484 | route A 0.7575 | break-even 0.077887 | margin  9.73x
+  nu_O 1.1927: gm N2O  0.0555 | route A 0.8674 | break-even 0.075796 | margin 11.44x
+  nu_O 1.6562: gm N2O  0.0770 | route A 1.2045 | break-even 0.069379 | margin 17.36x
 
 === 7.4-bis scheme methane countermeasures as an effective uplift ===
-  autumn tillage (10%)                     m 0.100 -> uplift 0.680631 | equilibrium dGHG +0.933678 | vs break-even 4.67x
-  prolonged midseason drainage (30%)       m 0.300 -> uplift 0.307157 | equilibrium dGHG +0.281661 | vs break-even 2.11x
-  no flooding preceding year (34%)         m 0.340 -> uplift 0.232462 | equilibrium dGHG +0.151258 | vs break-even 1.59x
-  drainage + autumn tillage (multiplic.)   m 0.370 -> uplift 0.176441 | equilibrium dGHG +0.053455 | vs break-even 1.21x
-  no flooding + drainage (multiplic.)      m 0.538 -> uplift -0.137276 | equilibrium dGHG -0.494239 | vs break-even -0.94x
-  reduction required to reverse the permanent sign: 38.64% (max single measure 34%)
-  m 0.30 -> annual cross 2107.7
-  m 0.34 -> annual cross 2124.2
+  autumn tillage (10%)                     m 0.100 -> uplift 0.680631 | equilibrium dGHG +2.031476 | vs break-even 8.98x
+  prolonged midseason drainage (30%)       m 0.300 -> uplift 0.307157 | equilibrium dGHG +0.777079 | vs break-even 4.05x
+  no flooding preceding year (34%)         m 0.340 -> uplift 0.232462 | equilibrium dGHG +0.526199 | vs break-even 3.07x
+  drainage + autumn tillage (multiplic.)   m 0.370 -> uplift 0.176441 | equilibrium dGHG +0.338040 | vs break-even 2.33x
+  no flooding + drainage (multiplic.)      m 0.538 -> uplift -0.137276 | equilibrium dGHG -0.715654 | vs break-even -1.81x
+  reduction required to reverse the permanent sign: 42.39% (max single measure 34%)
+  m 0.30 -> annual cross 2081.3
+  m 0.34 -> annual cross 2091.4
 
 === 7.5 epsN_gm band [ratio-transfer | Xie raw | paddy EF] ===
-  epsN_gm 0.00083  nu_O 1.0417: break-even 0.149845 | route A 0.7575 | margin  5.06x
-  epsN_gm 0.00083  nu_O 1.1927: break-even 0.145822 | route A 0.8674 | margin  5.95x
-  epsN_gm 0.00195  nu_O 1.0417: break-even 0.112078 | route A 0.7575 | margin  6.76x
-  epsN_gm 0.00195  nu_O 1.1927: break-even 0.102579 | route A 0.8674 | margin  8.46x
-  epsN_gm 0.00310  nu_O 1.0417: break-even 0.073444 | route A 0.7575 | margin 10.31x
-  epsN_gm 0.00310  nu_O 1.1927: break-even 0.058343 | route A 0.8674 | margin 14.87x
+  epsN_gm 0.00083  nu_O 1.0417: break-even 0.077887 | route A 0.7575 | margin  9.73x
+  epsN_gm 0.00083  nu_O 1.1927: break-even 0.075796 | route A 0.8674 | margin 11.44x
+  epsN_gm 0.00195  nu_O 1.0417: break-even 0.058257 | route A 0.7575 | margin 13.00x
+  epsN_gm 0.00195  nu_O 1.1927: break-even 0.053319 | route A 0.8674 | margin 16.27x
+  epsN_gm 0.00310  nu_O 1.0417: break-even 0.038175 | route A 0.7575 | margin 19.84x
+  epsN_gm 0.00310  nu_O 1.1927: break-even 0.030326 | route A 0.8674 | margin 28.60x
 
 === 7.6 psi_rice diagnostic ===
   psi_rice 0.720 -> psi_bar 0.717319, conversion dCAB -2.7008   Tottori 2011-13 [ADOPTED]
@@ -158,35 +171,35 @@ S1 (Part B) dCAB -4.6058 | core -4.6058
 4                  Rice only  0.481 0.000    0.00    0.00    -3.731
 5                    No rice  0.000 0.079    0.75    0.75    -6.053
   trillion_yen_per_yr dNFA_2050 dGHG_2050 dCAB_vsS1
-1              -0.423  -102.695     1.260    -2.701
-2              -0.173   -57.536     0.553     1.625
-3              -0.881  -184.916     0.567   -10.602
-4              -0.216   -65.633     2.659     0.874
+1              -0.423  -102.695     2.659    -2.701
+2              -0.173   -57.536     1.300     1.625
+3              -0.881  -184.916     1.326   -10.602
+4              -0.216   -65.633     5.350     0.874
 5              -0.351   -89.295    -0.255    -1.447
 
 CONSISTENCY uniform -7.30659920 vs core -7.30659920 (diff 5.68e-14)
-DOMINANCE no rice (-6.053, -0.25) vs every crop equally (-7.307, +1.26) -> YES on both margins
+DOMINANCE no rice (-6.053, -0.25) vs every crop equally (-7.307, +2.66) -> YES on both margins
 SPREAD -15.208 .. -2.981 (5.10x)
 
 === 10. CAP robustness ===
   CAP 0.50: no rice INFEASIBLE (0.240 < 0.25) -- itself a finding
-  CAP 0.75: every crop equally (-7.307, +1.26)  no rice (-6.053, -0.25)  dominates yes
-  CAP 1.00: every crop equally (-7.307, +1.26)  no rice (-3.067, -0.25)  dominates yes
+  CAP 0.75: every crop equally (-7.307, +2.66)  no rice (-6.053, -0.25)  dominates yes
+  CAP 1.00: every crop equally (-7.307, +2.66)  no rice (-3.067, -0.25)  dominates yes
   analytic turning point fr* = 1 - CAP*sA_other/A50 = 0.277312
 
 === 11. CAB-GHG frontier (rice share of the 25% area target) ===
    rice_share a_rice dCAB_2050 dGHG_2050
 1       0.000  0.000    -6.053    -0.255
-2       0.050  0.024    -5.099    -0.109
-3       0.100  0.048    -4.620     0.037
-4       0.150  0.072    -4.158     0.182
-5       0.200  0.096    -3.695     0.328
-6       0.250  0.120    -3.233     0.474
-7       0.270  0.130    -3.048     0.532
-8       0.277  0.133    -2.981     0.553
-9       0.285  0.137    -2.989     0.576
-10      0.300  0.144    -3.004     0.619
-11      0.400  0.192    -3.108     0.911
-12      0.500  0.240    -3.212     1.202
-13      0.750  0.361    -3.472     1.930
-14      1.000  0.481    -3.731     2.659
+2       0.050  0.024    -5.099     0.026
+3       0.100  0.048    -4.620     0.306
+4       0.150  0.072    -4.158     0.586
+5       0.200  0.096    -3.695     0.866
+6       0.250  0.120    -3.233     1.147
+7       0.270  0.130    -3.048     1.259
+8       0.277  0.133    -2.981     1.300
+9       0.285  0.137    -2.989     1.343
+10      0.300  0.144    -3.004     1.427
+11      0.400  0.192    -3.108     1.987
+12      0.500  0.240    -3.212     2.548
+13      0.750  0.361    -3.472     3.949
+14      1.000  0.481    -3.731     5.350

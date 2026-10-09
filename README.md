@@ -32,14 +32,14 @@ and emissions do not feed back into production or the current account.
 - When every crop is converted in equal proportion, conversion worsens the
   2050 current account by 0.16 trillion JPY per year and the fiscal balance by
   0.11 trillion JPY per year.
-- In 2050, greenhouse gas emissions under S2 are 1.45 Mt CO₂-eq per year below
-  BAU. From 2069 onwards the annual balance lies above BAU, and once soil
-  carbon accumulation has ceased the permanent increase is 1.26 Mt CO₂-eq per
+- In 2050, greenhouse gas emissions under S2 are almost unchanged from BAU
+  (−0.05 Mt CO₂-eq per year). From 2051 onwards the annual balance lies above BAU, and once soil
+  carbon accumulation has ceased the permanent increase is 2.66 Mt CO₂-eq per
   year.
 - The direct payment scheme for environmentally friendly agriculture credits
   organic farming with a constant 1.04 tCO₂/ha/yr. Under that convention the
   same policy records −0.73 Mt CO₂-eq per year in both 2050 and 2100; this
-  model records +0.88 Mt CO₂-eq per year in 2100.
+  model records +2.28 Mt CO₂-eq per year in 2100.
 - Relative to BAU, the 2050 current-account effect ranges from 0.17 to
   0.88 trillion JPY per year across five allocations of the same 25% area
   target (a 5.1-fold difference). Relative to S1, converting crops with low

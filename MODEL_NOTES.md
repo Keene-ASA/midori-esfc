@@ -88,23 +88,24 @@ four crops together and closer for rice (N04).
 S2 relative to BAU (Mt CO₂-eq per year):
 
 ```
-2030          −0.326
-2050          −1.445   (synthetic N2O −0.310, green-manure N2O +0.055,
-                        paddy CH4 +1.514, soil carbon −2.705)
-2069.1         0       annual balance rises above BAU
-2118           0       cumulative balance rises above BAU
-equilibrium   +1.260   once soil carbon accumulation has ceased
+2030          −0.238
+2050          −0.046   (synthetic N2O −0.310, green-manure N2O +0.055,
+                        paddy CH4 +2.913, soil carbon −2.705)
+2050.4         0       annual balance rises above BAU
+2063           0       cumulative balance rises above BAU
+equilibrium   +2.659   once soil carbon accumulation has ceased
 ```
 
 With green manure applied on 29/45 of converted land (`phi = 0.6444`): 2050
-−1.042, annual crossing 2072.7, cumulative crossing 2134, equilibrium +0.702.
+−0.140, annual crossing 2052.1, cumulative crossing 2068, equilibrium +1.603.
 
 S1 on its own stays below BAU in every year: with `a = 0`,
 `GHGnet = −1.033459 · pi_ < 0`.
 
-Continuing the organic ramp after 2050 at its 2030–2050 slope delays the
-annual crossing: to 2072.6 for a terminal share of 0.354 and to 2079.2 for
-0.50 (Section 4-ter).
+Continuing the organic ramp after 2050 leaves the annual crossing almost
+unchanged, at 2050.8 for a terminal share of either 0.354 or 0.50 against
+2050.4 at 0.25 (Section 4-ter). The crossing year therefore does not depend
+on when conversion stops.
 
 ## N08 — Sensitivity design
 
@@ -142,13 +143,13 @@ falls below the break-even:
 
 ```
 green-manure N    uplift    break-even   margin
-1.0417 (min)      0.7575    0.149845     5.06x
-1.1927 (adopted)  0.8674    0.145822     5.95x
-1.6562 (max)      1.2045    0.133477     9.02x
+1.0417 (min)      0.7575    0.077887     9.73x
+1.1927 (adopted)  0.8674    0.075796     11.44x
+1.6562 (max)      1.2045    0.069379     17.36x
 ```
 
 The adopted green-manure N₂O emission factor is the least favourable end of
-its band: the two alternatives raise the margin to between 6.76x and 14.87x
+its band: the two alternatives raise the margin to between 13.00x and 28.60x
 (Section 7.5).
 
 The paddy decomposition rate `k_paddy` (N20) moves the year of the annual
@@ -221,13 +222,15 @@ green manure is applied to paddy. Section 7.4-bis maps each countermeasure
 into an effective uplift `(1 + u)(1 − m) − 1`:
 
 ```
-reduction  equilibrium dGHG   annual crossing
-10%        +0.934
-30%        +0.282             2107.7
-34%        +0.151             2124.2
+reduction  uplift      equilibrium dGHG   annual crossing
+10%        0.680631    +2.031476          —
+30%        0.307157    +0.777079          2081.3
+34%        0.232462    +0.526199          2091.4
+37%        0.176441    +0.338040          —
+53.8%      −0.137276   −0.715654          —
 ```
 
-A reduction of 38.64% is needed to make the permanent change negative, above
+A reduction of 42.39% is needed to make the permanent change negative, above
 the largest single measure (34%). The scheme covered 84,795 ha in FY2025,
 about 2% of Japan's cropland, so applying a countermeasure to the whole
 converted area is an upper bound on what the requirement can achieve.
@@ -338,7 +341,7 @@ policy:
 ```
                       2050          2100
 scheme convention     −0.734        −0.734
-this model            −1.445        +0.882
+this model            −0.046        +2.281
 ```
 
 The first-period coefficient, 0.93, gives −0.657 in 2050 and is printed for
