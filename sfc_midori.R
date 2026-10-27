@@ -24,7 +24,7 @@ library(ggrepel)
 # Time
 # =============================================================================
 
-YEAR0 <- 2018 # period 1
+YEAR0 <- 2018 # period 0, so period t is year 2018 + t (period 1 = 2019)
 TERM <- 2050 - YEAR0
 yr <- function(y) y - YEAR0
 Y2022 <- yr(2022) # policy start
@@ -297,8 +297,9 @@ eqs <- sfcr_set(
   # -- emissions satellite (one-way) --
   LAo ~ a * LAbar,
   dN2O ~ ghg_n2o_syn0 * (F / Fbar - 1),
-  dN2Ogm ~ ghg_n2o_gm0 * (LAo / LAbar),
-  dCH4 ~ ghg_ch4_pad0 * (LAo / LAbar) * ch4_uplift,
+  # phi scales both green-manure terms, as in soc_extend() (no effect at phi = 1)
+  dN2Ogm ~ ghg_n2o_gm0 * (LAo / LAbar) * phi,
+  dCH4 ~ ghg_ch4_pad0 * (LAo / LAbar) * ch4_uplift * phi,
   # two-pool soil carbon, deviation from BAU [N20]
   SOCp ~ SOCp[-1] + phi * iota_paddy * (sA_rice * LAo) - k_paddy * SOCp[-1],
   SOCu ~ SOCu[-1] + phi * iota_upland * ((1 - sA_rice) * LAo) - k_upland * SOCu[-1],
@@ -500,7 +501,8 @@ slope_a <- (A50 - A30) / (Y2050 - Y2030)
 
 soc_extend <- function(Tend = 250, phi = phi_v, iota_p = iota_paddy_v,
                        iota_u = iota_upland_v, upl = ch4_uplift_v,
-                       a_end = A50, maff_rate = maff_rate_v) {
+                       a_end = A50, maff_rate = maff_rate_v,
+                       gm0 = ghg_n2o_gm0_v) {
   sp <- 0
   su <- 0
   g <- rep(NA_real_, Tend)
@@ -513,13 +515,13 @@ soc_extend <- function(Tend = 250, phi = phi_v, iota_p = iota_paddy_v,
       min(A50 + slope_a * (t - Y2050), a_end)
     }
     LAo <- a * LAbar_v
-    e <- ghg_n2o_syn0_v * (-pi_) + ghg_n2o_gm0_v * (LAo / LAbar_v) * phi +
+    e <- ghg_n2o_syn0_v * (-pi_) + gm0 * (LAo / LAbar_v) * phi +
       ghg_ch4_pad0_v * (LAo / LAbar_v) * upl * phi
     npx <- (1 - k_paddy_v) * sp + phi * iota_p * (sA_rice * LAo)
     nux <- (1 - k_upland_v) * su + phi * iota_u * ((1 - sA_rice) * LAo)
     sink[t] <- gamma_soc_v * ((npx - sp) + (nux - su))
     n1[t] <- ghg_n2o_syn0_v * (-pi_)
-    n2[t] <- ghg_n2o_gm0_v * (LAo / LAbar_v) * phi
+    n2[t] <- gm0 * (LAo / LAbar_v) * phi
     c4[t] <- ghg_ch4_pad0_v * (LAo / LAbar_v) * upl * phi
     maff[t] <- maff_rate * (LAo * A_ha_v) / 1e6 # scheme: constant rate on converted area
     g[t] <- e - sink[t]
@@ -894,14 +896,15 @@ plotdat <- bind_rows(list(S1 = s1, S2 = s2), .id = "scn") %>%
   mutate(bauNFA = bau$NFA[period]) %>%
   transmute(
     year = YEAR0 + period, scn,
-    `(a) Current account (tn JPY/yr)`      = CAB * unit_tn,
-    `(b) Net foreign assets (tn JPY)`      = (NFA - bauNFA) * unit_tn,
-    `(c) Government balance (tn JPY/yr)`   = (TX - (W$Ga + W$Gn + INB)) * unit_tn
+    # BAU current account and government balance are zero, so levels = change vs BAU
+    `(a) Current account vs BAU (tn JPY/yr)`    = CAB * unit_tn,
+    `(b) Net foreign assets vs BAU (tn JPY)`    = (NFA - bauNFA) * unit_tn,
+    `(c) Government balance vs BAU (tn JPY/yr)` = (TX - (W$Ga + W$Gn + INB)) * unit_tn
   ) %>%
   pivot_longer(-c(year, scn))
 plotdat$name <- factor(plotdat$name, levels = c(
-  "(a) Current account (tn JPY/yr)", "(b) Net foreign assets (tn JPY)",
-  "(c) Government balance (tn JPY/yr)"
+  "(a) Current account vs BAU (tn JPY/yr)", "(b) Net foreign assets vs BAU (tn JPY)",
+  "(c) Government balance vs BAU (tn JPY/yr)"
 ))
 
 ggplot(plotdat, aes(year, value, colour = scn)) +
@@ -1170,10 +1173,143 @@ p_tr <- ggplot(mapping = aes(x, y)) +
   ) +
   scale_y_continuous(breaks = seq(-0.35, 0, 0.05)) +
   labs(
-    x = "Annual GHG change once soil carbon has stabilised (Mt-CO2eq/yr; + = worse)",
-    y = "Current-account change, 2050 (tn JPY/yr; - = worse)"
+    x = "Permanent annual GHG change vs BAU (Mt-CO2eq/yr; + = worse)",
+    y = "Current-account change vs BAU, 2050 (tn JPY/yr; - = worse)"
   ) +
   theme_minimal(base_size = 12)
 
 print(p_tr)
 ggsave("figures/fig_allocation_frontier.png", p_tr, width = 7.5, height = 5.5, dpi = 300)
+
+
+# #################### PART C - NUMBERS FOR THE TEXT ####################
+#
+# Every number quoted in the thesis is written to results/ from this run, so
+# text, tables and figures come from one code version [N26]. Each row states
+# its comparison: S1 vs BAU, S2 vs BAU, or S2 - S1 (the conversion effect).
+
+dir.create("results", showWarnings = FALSE)
+
+pct_gdp <- function(tn) 100 * tn / nominal_GDP # 2017-19 nominal GDP (Cabinet Office, 2025)
+cum_to <- function(e, y) sum(e$dGHG[e$year <= y], na.rm = TRUE)
+first_cum_pos <- function(e) {
+  e$year[which(cumsum(replace(e$dGHG, is.na(e$dGHG), 0)) > 0)[1]]
+}
+perm_of <- function(u = ch4_uplift_v, gm0 = ghg_n2o_gm0_v, phi = 1) {
+  ghg_n2o_syn0_v * (-PI50) + gm0 * A50 * phi + ghg_ch4_pad0_v * A50 * u * phi
+}
+
+# S1 has no organic land: only synthetic N2O changes
+s1_ghg_cum2050 <- sum(ghg_n2o_syn0_v * (-ramp(1:TERM, v30 = PI30, v50 = PI50)))
+s2_ghg_cum2050 <- cum_to(ext, 2050)
+s2_ghg_cum2100 <- cum_to(ext, 2100)
+
+conv_ha <- A50 * LAbar_v * A_ha_v                # converted hectares in 2050
+conv_paddy_ha <- sA_rice * conv_ha
+sink_per_ha <- 1e6 * ext$sink[Y2050] / conv_ha   # tCO2/ha/yr in 2050
+ch4_per_paddy_ha <- 1e6 * s2$dCH4[Y2050] / conv_paddy_ha
+rice_only <- res %>% filter(allocation == "Rice only")
+rice_only_ch4 <- ghg_ch4_pad0_v * rice_only$a_rice * ch4_uplift_v
+
+cab <- function(s) d2050(s, "CAB") * unit_tn
+nfa <- function(s) d2050(s, "NFA") * unit_tn
+fisc <- function(s) (gov_bal(s) - gov_bal(bau)) * unit_tn
+ghg <- function(s) d2050(s, "GHGnet")
+
+srow <- function(metric, comparison, value, unit, pct = NA_real_, pct_of = "") {
+  tibble(metric, comparison, value, unit, pct, pct_of)
+}
+summary_2050 <- bind_rows(
+  srow("Current account, 2050", "S1 vs BAU", cab(s1), "tn JPY/yr", pct_gdp(cab(s1)), "GDP"),
+  srow("Current account, 2050", "S2 vs BAU", cab(s2), "tn JPY/yr", pct_gdp(cab(s2)), "GDP"),
+  srow("Current account, 2050", "S2 - S1", cab(s2) - cab(s1), "tn JPY/yr",
+      pct_gdp(cab(s2) - cab(s1)), "GDP"),
+  srow("Conversion effect: lost output", "S2 - S1", (CONV - int_term) * unit_tn, "tn JPY/yr",
+      100 * (CONV - int_term) / CONV, "conversion effect"),
+  srow("Conversion effect: lost interest on NFA", "S2 - S1", int_term * unit_tn, "tn JPY/yr",
+      100 * int_term / CONV, "conversion effect"),
+  srow("Net foreign assets, 2050", "S1 vs BAU", nfa(s1), "tn JPY", pct_gdp(nfa(s1)), "GDP"),
+  srow("Net foreign assets, 2050", "S2 vs BAU", nfa(s2), "tn JPY", pct_gdp(nfa(s2)), "GDP"),
+  srow("Net foreign assets, 2050", "S2 - S1", nfa(s2) - nfa(s1), "tn JPY",
+      pct_gdp(nfa(s2) - nfa(s1)), "GDP"),
+  srow("Government balance, 2050", "S1 vs BAU", fisc(s1), "tn JPY/yr", pct_gdp(fisc(s1)), "GDP"),
+  srow("Government balance, 2050", "S2 vs BAU", fisc(s2), "tn JPY/yr", pct_gdp(fisc(s2)), "GDP"),
+  srow("Government balance, 2050", "S2 - S1", fisc(s2) - fisc(s1), "tn JPY/yr",
+      pct_gdp(fisc(s2) - fisc(s1)), "GDP"),
+  srow("Annual GHG, 2050", "S1 vs BAU", ghg(s1), "Mt CO2-eq/yr"),
+  srow("Annual GHG, 2050", "S2 vs BAU", ghg(s2), "Mt CO2-eq/yr"),
+  srow("Annual GHG, 2050", "S2 - S1", ghg(s2) - ghg(s1), "Mt CO2-eq/yr"),
+  srow("  synthetic-fertiliser N2O", "S2 vs BAU", s2$dN2O[Y2050], "Mt CO2-eq/yr"),
+  srow("  green-manure N2O", "S2 vs BAU", s2$dN2Ogm[Y2050], "Mt CO2-eq/yr"),
+  srow("  paddy CH4", "S2 vs BAU", s2$dCH4[Y2050], "Mt CO2-eq/yr",
+      100 * s2$dCH4[Y2050] / ghg_ch4_pad0_v, "national paddy CH4"),
+  srow("  soil carbon", "S2 vs BAU", s2$dCO2soc[Y2050], "Mt CO2-eq/yr"),
+  srow("Permanent annual GHG (soil carbon saturated)", "S2 vs BAU", EMperm, "Mt CO2-eq/yr"),
+  srow("Cumulative GHG 2019-2050", "S1 vs BAU", s1_ghg_cum2050, "Mt CO2-eq"),
+  srow("Cumulative GHG 2019-2050", "S2 vs BAU", s2_ghg_cum2050, "Mt CO2-eq"),
+  srow("Cumulative GHG 2019-2050", "S2 - S1", s2_ghg_cum2050 - s1_ghg_cum2050, "Mt CO2-eq"),
+  srow("Cumulative GHG 2019-2100", "S2 vs BAU", s2_ghg_cum2100, "Mt CO2-eq"),
+  srow("First year with annual GHG above BAU", "S2 vs BAU", ceiling(tcross), "year"),
+  srow("First year with cumulative GHG above BAU", "S2 vs BAU", first_cum_pos(ext), "year"),
+  srow("Scheme convention, 2050", "S2 vs BAU", ext$dGHG_maff[Y2050], "Mt CO2-eq/yr"),
+  srow("Scheme convention, cumulative 2019-2050", "S2 vs BAU",
+      sum(ext$dGHG_maff[ext$year <= 2050], na.rm = TRUE), "Mt CO2-eq"),
+  srow("Soil carbon sink per converted ha, 2050", "S2 vs BAU", sink_per_ha, "t CO2/ha/yr",
+      100 * sink_per_ha / maff_rate_v, "scheme rate 1.04"),
+  srow("Paddy CH4 increase per converted paddy ha", "S2 vs BAU", ch4_per_paddy_ha,
+      "t CO2-eq/ha/yr"),
+  srow("Rice-only allocation: paddy CH4", "S2 vs BAU", rice_only_ch4, "Mt CO2-eq/yr",
+      100 * rice_only_ch4 / ghg_ch4_pad0_v, "national paddy CH4")
+)
+cat("\n=== 12. SUMMARY TABLE FOR 2050 (results/summary_2050.csv) ===\n")
+print(as.data.frame(summary_2050 %>% mutate(value = signif(value, 5), pct = signif(pct, 4))),
+      right = FALSE)
+write_csv(summary_2050, "results/summary_2050.csv")
+
+# -- 12-bis. Sign at the uplift bounds (route A over the green-manure N band) --
+#    nu_O moves the uplift, the green-manure N2O and the soil carbon input together.
+cat("\n=== 12-bis. GHG sign at the uplift bounds ===\n")
+bounds <- map_dfr(c(nu_O_band[1], nu_O_v, nu_O_band[2]), function(nu) {
+  iota_g <- nu * Fbar_kgN_v * CN_gm_v / 1000
+  u <- ch4_route_A(nu)
+  e <- soc_extend(iota_p = iota_g - resid_loss_paddy_v,
+                  iota_u = iota_g - resid_loss_upland_v,
+                  upl = u, gm0 = gm0_of(nu))
+  tibble(
+    nu_O = nu, uplift = u, dGHG_2050 = e$dGHG[Y2050],
+    cum_2050 = cum_to(e, 2050), cum_2100 = cum_to(e, 2100),
+    annual_cross = cross_up(e$dGHG, e$year, after = 2022),
+    first_cum_positive = first_cum_pos(e),
+    permanent = perm_of(u, gm0_of(nu))
+  )
+})
+print(as.data.frame(bounds %>% mutate(across(where(is.numeric), ~ round(., 4)))))
+write_csv(bounds, "results/ghg_uplift_bounds.csv")
+
+cat("\n=== 12-ter. GHG under the scheme's methane countermeasures ===\n")
+cmeas <- map_dfr(names(m_list), function(nm) {
+  u <- (1 + ch4_uplift_v) * (1 - m_list[[nm]]) - 1
+  e <- soc_extend(upl = u)
+  tibble(
+    measure = nm, reduction = m_list[[nm]], uplift = u,
+    dGHG_2050 = e$dGHG[Y2050], cum_2050 = cum_to(e, 2050),
+    cum_2100 = cum_to(e, 2100), permanent = perm_of(u)
+  )
+})
+print(as.data.frame(cmeas %>% mutate(across(where(is.numeric), ~ round(., 4)))))
+write_csv(cmeas, "results/ghg_countermeasures.csv")
+
+# -- 12-quater. Fixed demand against the own-price elasticity (Section 4.3) --
+#    Back-of-envelope only: the model has no consumer price. It shows how large
+#    a price response would have to be to absorb the conversion shortfall.
+eps_own <- -0.454 # uncompensated own-price elasticity, food excl. meals away from home (Haijima, 2021) [LIT]
+dYA_conv <- s2$YA[Y2050] - s1$YA[Y2050]
+short_pct <- -100 * dYA_conv / Dbar_v
+prem_pct <- 100 * s2$PREM[Y2050] / Dbar_v
+cat("\n=== 12-quater. fixed demand vs own-price elasticity (indicative) ===\n")
+cat(sprintf("  conversion output shortfall 2050: %.4f index = %.3f%% of food demand Dbar\n",
+            -dYA_conv, short_pct))
+cat(sprintf("  price rise that would absorb it at eps %.3f: %.2f%%\n", eps_own, short_pct / abs(eps_own)))
+cat(sprintf("  organic premium paid in S2, 2050: %.4f index = %.3f%% of Dbar -> demand %.3f%% at eps\n",
+            s2$PREM[Y2050], prem_pct, prem_pct * eps_own))
+cat("  -> the premium is not passed into quantities: fixed demand is a strong assumption.\n")

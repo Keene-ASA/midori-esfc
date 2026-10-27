@@ -1,5 +1,24 @@
 # Changelog
 
+## v1.0.2
+
+Reporting release. No headline value changes.
+
+- New Part C writes every number quoted in the thesis to `results/` from one
+  run: `summary_2050.csv` (one row per metric, each labelled S1 vs BAU,
+  S2 vs BAU or S2 - S1, with % of GDP or % of national paddy CH4 where
+  relevant), `ghg_uplift_bounds.csv`, `ghg_countermeasures.csv`.
+- Adds cumulative net GHG (2019-2050, 2019-2100), the first year in which the
+  cumulative balance turns positive, the sign of the GHG balance at both ends
+  of the methane-uplift band, and a back-of-envelope check of fixed demand
+  against the own-price elasticity of Haijima (2021).
+- `soc_extend()` takes the green-manure N2O scale `gm0` as an argument so the
+  uplift bounds move N2O, soil carbon input and CH4 together.
+- Part A: `phi` now scales green-manure N2O and paddy CH4 as it already did in
+  `soc_extend()`. No effect at the central `phi = 1`.
+- Figure 1 and Figure 3 axis labels state the comparison (vs BAU).
+- Comment fix: period 0 is 2018, period 1 is 2019.
+
 ## v1.0.1
 
 Fixed the paddy methane equation: the national paddy CH4 baseline

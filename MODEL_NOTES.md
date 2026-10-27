@@ -406,3 +406,23 @@ the area-weighted `(1 − psi)` of vegetables, fruit and other crops
 
 The upland figure comes from Hokkaido, whose crop mix differs from the
 national one, and contains no orchard crops.
+
+
+## N26 — One run, one set of numbers
+
+Part C writes the numbers the thesis quotes to `results/summary_2050.csv`,
+each with its comparison. Current-account and fiscal results are reported as
+S2 − S1 (the conversion effect) and greenhouse gas results as S2 vs BAU; both
+are listed so the text can say which it uses. Percentages of GDP use the
+2017–19 mean nominal GDP (Cabinet Office, 2025), not the model's closure GDP,
+which is a stylised level and cancels from the policy difference.
+
+The uplift bounds (Section 12-bis) vary green-manure N over its band, which
+moves the methane uplift (route A), green-manure N₂O and the soil carbon input
+together. The 2050 annual balance changes sign inside the band (crossing
+between 2049.7 and 2051.4), while the cumulative balance to 2050 stays
+negative and the permanent balance stays positive at every point.
+
+Section 12-quater is not a model result. It compares the conversion shortfall
+in 2050 with the demand response an own-price elasticity of −0.454
+(Haijima, 2021) would imply, to show how strong the fixed-demand closure is.
