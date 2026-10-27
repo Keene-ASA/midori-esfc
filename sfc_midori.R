@@ -1146,13 +1146,14 @@ print(as.data.frame(frontier %>% mutate(across(where(is.numeric), ~ round(., 3))
 # Figure 3: allocation frontier [N17]
 # =============================================================================
 
+# Current account relative to S1 (the conversion effect), as in the text
 fr_p <- frontier %>%
   transmute(
-    x = dGHG_2050, y = dCAB_2050 * unit_tn,
+    x = dGHG_2050, y = (dCAB_2050 - s1_cab) * unit_tn,
     lab = ifelse(rice_share %in% c(0, 0.50, 1.0),
                  sprintf("%.0f%%", 100 * rice_share), NA_character_)
   )
-elbow <- fr_opt %>% transmute(x = dGHG_2050, y = dCAB_2050 * unit_tn)
+elbow <- fr_opt %>% transmute(x = dGHG_2050, y = (dCAB_2050 - s1_cab) * unit_tn)
 
 p_tr <- ggplot(mapping = aes(x, y)) +
   geom_hline(yintercept = 0, linewidth = 0.3, colour = "grey70") +
@@ -1167,14 +1168,14 @@ p_tr <- ggplot(mapping = aes(x, y)) +
     min.segment.length = 0, seed = 20260807
   ) +
   geom_text_repel(
-    data = elbow, aes(label = "27.7%: smallest\ncurrent-account cost"),
+    data = elbow, aes(label = "27.7%: largest\ncurrent-account gain"),
     size = 3.2, colour = "#D1495B", box.padding = 1.2,
     nudge_y = 0.03, min.segment.length = 0, seed = 20260807
   ) +
-  scale_y_continuous(breaks = seq(-0.35, 0, 0.05)) +
+  scale_y_continuous(breaks = seq(-0.10, 0.10, 0.05)) +
   labs(
     x = "Permanent annual GHG change vs BAU (Mt-CO2eq/yr; + = worse)",
-    y = "Current-account change vs BAU, 2050 (tn JPY/yr; - = worse)"
+    y = "Current-account change vs S1, 2050 (tn JPY/yr; - = worse)"
   ) +
   theme_minimal(base_size = 12)
 

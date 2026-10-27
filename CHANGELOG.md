@@ -16,7 +16,9 @@ Reporting release. No headline value changes.
   uplift bounds move N2O, soil carbon input and CH4 together.
 - Part A: `phi` now scales green-manure N2O and paddy CH4 as it already did in
   `soc_extend()`. No effect at the central `phi = 1`.
-- Figure 1 and Figure 3 axis labels state the comparison (vs BAU).
+- Figure 1 axis labels state the comparison (vs BAU). Figure 3 now plots the
+  current account relative to S1 (the conversion effect, as in the text) and
+  GHG relative to BAU, and both axis labels say so.
 - Comment fix: period 0 is 2018, period 1 is 2019.
 
 ## v1.0.1
