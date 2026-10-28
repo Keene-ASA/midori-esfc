@@ -53,6 +53,9 @@ and emissions do not feed back into production or the current account.
 | `data/calibration_ledger.csv` | Every calibrated input with its value, unit, source and provenance tag |
 | `MODEL_NOTES.md` | Design rationale referenced from the code as `[N01]`–`[N25]` |
 | `results/run_log.txt` | Console output of a full run of `sfc_midori.R` |
+| `results/summary_2050.csv` | Every number quoted in the thesis, with the comparison it refers to (S1 vs BAU, S2 vs BAU, S2 − S1) |
+| `results/ghg_uplift_bounds.csv` | GHG balance at the bounds of the paddy methane uplift |
+| `results/ghg_countermeasures.csv` | GHG balance under the direct payment scheme's methane countermeasures |
 | `figures/` | Figures written by the script |
 | `LICENSE`, `LICENSE-DATA.md` | Licences (see below) |
 | `CITATION.cff`, `.zenodo.json` | Citation metadata |

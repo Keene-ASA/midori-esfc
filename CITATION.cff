@@ -6,7 +6,7 @@ authors:
   - family-names: Kin
     given-names: Asahi
     affiliation: University of Hohenheim
-version: 1.0.0
+version: 1.0.2
 license: MIT
 repository-code: "https://github.com/Keene-ASA/midori-esfc"
 keywords:

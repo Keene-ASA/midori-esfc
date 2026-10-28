@@ -1,0 +1,31 @@
+metric,comparison,value,unit,pct,pct_of
+"Current account, 2050",S1 vs BAU,-0.26670448459950746,tn JPY/yr,-0.04689693040389368,GDP
+"Current account, 2050",S2 vs BAU,-0.4231008045909689,tn JPY/yr,-0.07439743286105482,GDP
+"Current account, 2050",S2 - S1,-0.15639631999146142,tn JPY/yr,-0.027500502457161145,GDP
+Conversion effect: lost output,S2 - S1,-0.12615928689759132,tn JPY/yr,80.66640372642979,conversion effect
+Conversion effect: lost interest on NFA,S2 - S1,-0.030237033093870137,tn JPY/yr,19.333596273570212,conversion effect
+"Net foreign assets, 2050",S1 vs BAU,-4.27848200457312,tn JPY,-0.7523220807631956,GDP
+"Net foreign assets, 2050",S2 vs BAU,-5.946729979258058,tn JPY,-1.045664389133891,GDP
+"Net foreign assets, 2050",S2 - S1,-1.6682479746849381,tn JPY,-0.29334230837069547,GDP
+"Government balance, 2050",S1 vs BAU,-0.21234196165386893,tn JPY/yr,-0.03733790308198718,GDP
+"Government balance, 2050",S2 vs BAU,-0.3271540078737825,tn JPY/yr,-0.057526287050067834,GDP
+"Government balance, 2050",S2 - S1,-0.11481204621991359,tn JPY/yr,-0.02018838396808066,GDP
+"Annual GHG, 2050",S1 vs BAU,-0.3100377,Mt CO2-eq/yr,NA,
+"Annual GHG, 2050",S2 vs BAU,-0.04618243556775381,Mt CO2-eq/yr,NA,
+"Annual GHG, 2050",S2 - S1,0.2638552644322462,Mt CO2-eq/yr,NA,
+  synthetic-fertiliser N2O,S2 vs BAU,-0.3100377,Mt CO2-eq/yr,NA,
+  green-manure N2O,S2 vs BAU,0.055458282521026,Mt CO2-eq/yr,NA,
+  paddy CH4,S2 vs BAU,2.913253753680855,Mt CO2-eq/yr,21.684181615000004,national paddy CH4
+  soil carbon,S2 vs BAU,-2.704856771769635,Mt CO2-eq/yr,NA,
+Permanent annual GHG (soil carbon saturated),S2 vs BAU,2.6586743362018814,Mt CO2-eq/yr,NA,
+Cumulative GHG 2019-2050,S1 vs BAU,-6.1490810499999995,Mt CO2-eq,NA,
+Cumulative GHG 2019-2050,S2 vs BAU,-7.179294399081799,Mt CO2-eq,NA,
+Cumulative GHG 2019-2050,S2 - S1,-1.0302133490817997,Mt CO2-eq,NA,
+Cumulative GHG 2019-2100,S2 vs BAU,68.3512004894233,Mt CO2-eq,NA,
+First year with annual GHG above BAU,S2 vs BAU,2051,year,NA,
+First year with cumulative GHG above BAU,S2 vs BAU,2063,year,NA,
+"Scheme convention, 2050",S2 vs BAU,-0.734292,Mt CO2-eq/yr,NA,
+"Scheme convention, cumulative 2019-2050",S2 vs BAU,-8.357711544,Mt CO2-eq,NA,
+"Soil carbon sink per converted ha, 2050",S2 vs BAU,3.8309705711629944,t CO2/ha/yr,368.3625549195187,scheme rate 1.04
+Paddy CH4 increase per converted paddy ha,S2 vs BAU,7.938146596416141,t CO2-eq/ha/yr,NA,
+Rice-only allocation: paddy CH4,S2 vs BAU,5.604728404399617,Mt CO2-eq/yr,41.717597881816516,national paddy CH4
